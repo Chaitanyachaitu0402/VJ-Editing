@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>VJ Edit Point – Luxury AI Editing Studio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+<link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./images/logo.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/logo.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./images/logo.png"
+    />
+
+    <style>
+     html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0a0a0a;
+  font-family: "Montserrat", sans-serif;
+
+  /* Smooth rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Smooth transitions */
+  transition: background-color 0.6s ease, color 0.6s ease;
+}
+
+
+      .gold-gradient {
+        background: linear-gradient(135deg, #d4af37, #8a6e2f);
+      }
+
+      .gold-border {
+        border: 1px solid #d4af37;
+      }
+
+      .glass {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(12px);
+      }
+
+      .pulse {
+        animation: pulse 0.6s ease-in-out;
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.2);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      /* WhatsApp hover label */
+      .wa-label {
+        transform: translateX(100%);
+        opacity: 0;
+        transition: all 0.3s ease;
+      }
+
+      .wa-container:hover .wa-label {
+        transform: translateX(0);
+        opacity: 1;
+      }
+
+      .footer-bar {
+  border-top: 1px solid #2e2e2e;  
+  margin-top: 2rem;                
+  padding-top: 1rem;   
+  text-align: center;
+  font-size: 0.875rem;             
+  color: #5a5a5a;                 
+}
+
+.footer-line {
+  display: inline-flex;            
+  align-items: center;             
+  justify-content: center;         
+  gap: 0.25rem;  
+  color: white;                 
+}
+
+.heart-icon {
+  width: 1rem;                     
+  height: 1rem;
+  fill: #ef4444;                  
+  margin: 0 0.25rem;               
+  vertical-align: -2px;
+}
+
+.brand-link {
+  display: inline-flex;            
+  align-items: center;             
+  gap: 0.25rem;                    
+  text-decoration: none;
+  color: #ea580c;                  
+  font-weight: 500;
+}
+
+.brand-link:hover {
+  text-decoration: underline;      
+}
+
+.brand-logo {
+  width: 1.25rem;                  
+  height: 1.25rem;                 
+  object-fit: contain;             
+}
+
+/* Cart Toast Animation */
+#cartToast.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+#cartToast {
+  transform: translate(-50%, 20px);
+}
+
+.mobile-link {
+  color: #ffffff;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  transition: all 0.4s ease;
+}
+
+.mobile-link:hover {
+  color: #D4AF37;
+  transform: translateY(-2px);
+}
+
+
+
+    </style>
+  </head>
+
+  <!-- Add to Cart Popup -->
+
+
+
+  <body class="text-white">
+
+    <div
+  id="cartToast"
+  class="fixed bottom-6 left-1/2 -translate-x-1/2
+         bg-black/90 border border-[#D4AF37]/50
+         rounded-2xl px-6 py-4 shadow-2xl
+         flex items-center gap-4
+         opacity-0 pointer-events-none
+         transition-all duration-500 z-50"
+>
+  <div
+    class="w-10 h-10 rounded-full gold-gradient
+           flex items-center justify-center text-black font-bold"
+  >
+    ✓
+  </div>
+
+  <div>
+    <p class="text-white font-semibold text-sm">
+      Added to Cart
+    </p>
+    <!-- <p id="toastText" class="text-gray-300 text-xs">
+      Service added successfully
+    </p> -->
+  </div>
+</div>
+    <!-- ================= HEADER ================= -->
+    <header class="fixed top-0 left-0 w-full z-50">
+  <div class="backdrop-blur-xl bg-black/60 border-b border-[#D4AF37]/30">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+
+      <!-- Logo -->
+      <div class="flex items-center gap-3">
+        <img
+          src="./images/logo.png"
+          alt="VJ Edit Point Logo"
+          class="h-10 w-auto object-contain"
+        />
+        <span class="text-sm font-semibold text-[#D4AF37] tracking-wide">
+          VJ Edit Point
+        </span>
+      </div>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center gap-10">
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#about" class="nav-link">About Us</a>
+        <a href="#contact" class="nav-link">Contact Us</a>
+      </nav>
+
+      <!-- Right -->
+      <div class="w-10 h-10 rounded-full flex items-center justify-center">
+        <!-- Instagram -->
+        <a
+          href="https://www.instagram.com/vj_edit_point?igsh=MTZvdjRsOTlkZ2NvZw%3D%3D&utm_source=qr"
+          target="_blank"
+          class="hidden md:flex social-icon"
+        >
+          <img src="https://img.icons8.com/fluency/48/instagram-new.png" width="48" />
+        </a>
+
+        <!-- Hamburger -->
+        <!-- Hamburger Button -->
+<button
+  onclick="openMenu()"
+  class="md:hidden text-[#D4AF37]"
+  aria-label="Open Menu"
+  id="openMenuBtn"
+>
+  <!-- Hamburger Icon -->
+  <svg xmlns="http://www.w3.org/2000/svg"
+       class="w-8 h-8"
+       fill="none"
+       viewBox="0 0 24 24"
+       stroke="currentColor"
+       stroke-width="2">
+    <path stroke-linecap="round" stroke-linejoin="round"
+          d="M4 6h16M4 12h16M4 18h16" />
+  </svg>
+</button>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- GLASS MOBILE MENU -->
+  <!-- MOBILE MENU OVERLAY -->
+<div
+  id="mobileMenu"
+  class="fixed inset-0 z-50 bg-black/80 backdrop-blur-2xl
+         flex flex-col items-center justify-center
+         opacity-0 pointer-events-none
+         transition-all duration-500 ease-out"
+>
+
+  <!-- CLOSE ICON (X) -->
+  <button
+    onclick="closeMenu()"
+    aria-label="Close Menu"
+    class="absolute top-6 right-6 text-[#D4AF37]"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg"
+         class="w-9 h-9"
+         fill="none"
+         viewBox="0 0 24 24"
+         stroke="currentColor"
+         stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round"
+            d="M6 18L18 6M6 6l12 12" />
+    </svg>
+  </button>
+
+  <!-- MENU LINKS -->
+  <nav class="flex flex-col items-center space-y-8 text-xl">
+    <a href="#home" onclick="closeMenu()" class="mobile-link">Home</a>
+    <a href="#services" onclick="closeMenu()" class="mobile-link">Services</a>
+    <a href="#about" onclick="closeMenu()" class="mobile-link">About Us</a>
+    <a href="#contact" onclick="closeMenu()" class="mobile-link">Contact Us</a>
+
+    <!-- Divider -->
+    <div class="w-16 h-px bg-[#D4AF37]/40 my-4"></div>
+
+    <!-- Instagram -->
+    <a
+      href="https://www.instagram.com/vj_edit_point"
+      target="_blank"
+      class="flex items-center gap-2 text-[#D4AF37]"
+    >
+      <img src="https://img.icons8.com/fluency/48/instagram-new.png" width="24" />
+      Instagram
+    </a>
+  </nav>
+</div>
+
+</header>
+
+
+    <!-- ================= HERO SECTION ================= -->
+<section class="relative overflow-hidden py-32 lg:py-32 px-6">
+  <!-- Background Glow -->
+  <div class="absolute inset-0 pointer-events-none">
+    <div
+      class="absolute top-1/2 left-1/2 w-[700px] h-[700px]
+             -translate-x-1/2 -translate-y-1/2
+             bg-gradient-to-br from-[#D4AF37]/15 to-transparent
+             rounded-full blur-[160px]">
+    </div>
+  </div>
+
+  <!-- IMPORTANT CHANGE HERE -->
+  <div class="relative max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+    <!-- LEFT CONTENT -->
+    <div>
+      <!-- Decorative Line -->
+      <div class="flex items-center gap-4 mb-6">
+        <span class="w-12 h-[2px] bg-gradient-to-r from-[#D4AF37] to-[#8A6E2F]"></span>
+        <span class="text-sm uppercase tracking-widest text-[#D4AF37]">
+          VJ Edit Point
+        </span>
+      </div>
+
+      <h1 class="text-4xl md:text-6xl font-bold leading-tight text-white mb-6">
+        Elevating Memories <br />
+        through
+        <span
+          class="block text-transparent bg-clip-text
+                 bg-gradient-to-r from-[#D4AF37] to-[#8A6E2F]"
+        >
+          AI-Powered Editing <br />& Premium Album Design
+        </span>
+      </h1>
+
+      <p class="text-lg md:text-xl text-gray-300 max-w-xl mb-10">
+        Professional Video and Wedding Album services crafted with emotion,
+        precision, and cinematic storytelling — based in Hyderabad.
+      </p>
+
+      <!-- CTA Buttons -->
+      <div class="flex flex-wrap gap-5">
+        <a
+          href="#services"
+          class="inline-flex items-center gap-2 px-10 py-4 rounded-full
+                 font-semibold text-black gold-gradient shadow-xl
+                 hover:scale-105 transition"
+        >
+          Explore Services
+          <i data-lucide="arrow-right"></i>
+        </a>
+
+        <a
+          href="https://wa.me/919014750705"
+          class="inline-flex items-center gap-2 px-10 py-4 rounded-full
+                 font-semibold text-[#D4AF37] border border-[#D4AF37]/60
+                 hover:bg-[#D4AF37]/10 transition"
+        >
+          Chat on WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <!-- RIGHT VISUAL BLOCK (AI VIDEO) -->
+    <div>
+      <div class="relative glass gold-border rounded-3xl overflow-hidden shadow-2xl">
+
+        <!-- AI Loop Video -->
+        <video
+          class="w-full h-[360px] object-cover"
+          src="./images/AI.mp4"
+          autoplay
+          muted
+          loop
+          playsinline
+        ></video>
+
+        <!-- Gradient Overlay -->
+        <div
+          class="absolute inset-0 bg-gradient-to-t
+                 from-black/70 via-black/20 to-transparent"
+        ></div>
+
+        <!-- Text Overlay -->
+        <div class="absolute bottom-0 left-0 right-0 p-6">
+          <p class="text-[#D4AF37] text-lg font-semibold mb-2">
+            Premium • AI-Driven • Cinematic
+          </p>
+          <p class="text-gray-200 text-sm leading-relaxed">
+            From wedding teasers and surprise reveals to luxury albums,
+            we transform your moments into timeless visual stories.
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+    <!-- About -->
+
+    <section id="about" class="max-w-7xl mx-auto px-6 py-24">
+      <div class="grid md:grid-cols-2 gap-14 items-center">
+        <div>
+          <h2 class="text-3xl md:text-4xl font-bold mb-6 text-[#D4AF37]">
+            The Future of Wedding Cinematography & Design
+          </h2>
+          <p class="text-gray-300 leading-relaxed mb-4">
+            At VJ Edit Point, located in Sangeeth Nagar, Kukatpally, we believe
+            that every celebration deserves a cinematic soul. We are more than
+            just editors; we are digital architects of emotion.
+          </p>
+          <p class="text-gray-400 leading-relaxed mb-10">
+            By blending high-end AI editing tools with a deep understanding of
+            human storytelling, we bridge the gap between technology and
+            tradition. Whether it’s the grandeur of a wedding film or the
+            fast-paced energy of a social media reel, our mission is to provide
+            professional, high-fidelity visuals that stand the test of time.
+          </p>
+
+          <div class="mt-4 hover:scale-105 transition">
+            <a
+              href="https://wa.me/919014750705"
+              class="gold-gradient px-10 py-4 rounded-full font-semibold text-black shadow-xl"
+            >
+              Contact Us on WhatsApp
+            </a>
+          </div>
+        </div>
+
+        <div class="glass gold-border rounded-2xl p-6">
+          <img src="./images/logo.png" class="rounded-xl" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SERVICES ================= -->
+    <h2
+          class="text-center text-3xl md:text-4xl font-bold text-[#D4AF37] mb-16"
+        >
+Our Packages
+        </h2>
+
+    <section
+  id="services"
+  class="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+>
+  <script>
+    const services = [
+      {
+        title: "Wedding Teaser Video (Gold)",
+        price: 4999,
+        image: "./images/wedding-gold.jpeg",
+      },
+      {
+        title: "Wedding Teaser Video (Silver)",
+        price: 2999,
+        image: "./images/wedding-silver.jpeg",
+      },
+      {
+        title: "Surprise Reveal Vertical (Basic)",
+        price: 999,
+        image: "./images/surprise-ver-basic.jpeg",
+      },
+      {
+        title: "Surprise Reveal Vertical (Classic)",
+        price: 1499,
+        image: "./images/surprise-ver2-classic.jpeg",
+      },
+      {
+        title: "Cinematic Birthday (Kids)",
+        price: 1999,
+        image: "./images/services/cinematic-birthday-kids.jpg",
+      },
+      {
+        title: "Regular Birthday (Kids)",
+        price: 1499,
+        image: "./images/services/regular-birthday-kids.jpg",
+      },
+      {
+        title: "Regular Birthday (Adult)",
+        price: 1699,
+        image: "./images/services/regular-birthday-adult.jpg",
+      },
+      {
+        title: "Memory Video",
+        price: 1299,
+        image: "./images/services/memory-video.jpg",
+      },
+      {
+        title: "Half Saree Video",
+        price: 2499,
+        image: "./images/services/half-saree.jpg",
+      },
+      {
+        title: "13 Day Function Video",
+        price: 1999,
+        image: "./images/services/13-day-function.jpg",
+      },
+      {
+        title: "Cradle Ceremony",
+        price: 1799,
+        image: "./images/services/cradle.jpg",
+      },
+      {
+        title: "25th Anniversary",
+        price: 2999,
+        image: "./images/services/25th-anniversary.jpg",
+      },
+      {
+        title: "Sreemantam",
+        price: 2499,
+        image: "./images/services/sreemantam.jpg",
+      },
+      {
+        title: "Name Reveal",
+        price: 999,
+        image: "./images/services/name-reveal.jpg",
+      },
+      {
+        title: "AI Name Reveal",
+        price: 1499,
+        image: "./images/services/ai-name-reveal.jpg",
+      },
+    ];
+
+    document.write(
+      services
+        .map(
+          (service) => `
+          <div class="glass gold-border rounded-2xl overflow-hidden shadow-xl hover:scale-[1.02] transition">
+
+            <!-- Image -->
+            <div class="w-full aspect-[3/4] overflow-hidden rounded-t-2xl">
+              <img
+                src="${service.image}"
+                alt="${service.title}"
+                class="w-full h-full object-cover"
+              />
+            </div>
+
+            <!-- Content -->
+            <div class="p-5">
+
+              <h3 class="text-xl font-semibold text-[#D4AF37] mb-1">
+                ${service.title}
+              </h3>
+
+              <!-- Price -->
+              <p class="text-2xl font-bold text-white mb-3">
+                ₹${service.price}/-
+              </p>
+
+              <p class="text-gray-300 text-sm mb-4">
+                Premium professional editing crafted with AI precision.
+              </p>
+
+              <button 
+                onclick="addToCart('${service.title} - ₹${service.price}')"
+                class="gold-gradient px-4 py-2 rounded-full text-black font-semibold hover:opacity-90 transition"
+              >
+                Add to Cart
+              </button>
+            </div>
+
+          </div>
+        `
+        )
+        .join("")
+    );
+  </script>
+</section>
+
+
+
+    <section class="bg-black/60 py-24">
+      <div class="max-w-7xl mx-auto px-6">
+        <h2
+          class="text-center text-3xl md:text-4xl font-bold text-[#D4AF37] mb-16"
+        >
+          Why Choose VJ Edit Point
+        </h2>
+
+        <div class="grid md:grid-cols-4 gap-8">
+          <div class="glass gold-border rounded-xl p-6 text-center">
+            <h3 class="text-lg font-semibold text-[#D4AF37] mb-2">
+              AI Precision
+            </h3>
+            <p class="text-gray-400 text-sm">
+              Advanced AI tools for flawless edits
+            </p>
+          </div>
+
+          <div class="glass gold-border rounded-xl p-6 text-center">
+            <h3 class="text-lg font-semibold text-[#D4AF37] mb-2">
+              Cinematic Quality
+            </h3>
+            <p class="text-gray-400 text-sm">
+              Storytelling with emotion & flow
+            </p>
+          </div>
+
+          <div class="glass gold-border rounded-xl p-6 text-center">
+            <h3 class="text-lg font-semibold text-[#D4AF37] mb-2">
+              Premium Albums
+            </h3>
+            <p class="text-gray-400 text-sm">Luxury album layouts & finishes</p>
+          </div>
+
+          <div class="glass gold-border rounded-xl p-6 text-center">
+            <h3 class="text-lg font-semibold text-[#D4AF37] mb-2">
+              On-Time Delivery
+            </h3>
+            <p class="text-gray-400 text-sm">
+              We respect your moments & deadlines
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="relative max-w-7xl mx-auto px-6 py-28">
+
+  <!-- Section Heading -->
+  <div class="text-center mb-20">
+    <h2 class="text-3xl md:text-4xl font-bold text-[#D4AF37]">
+      Our Creative Process
+    </h2>
+    <p class="mt-4 text-gray-400 max-w-2xl mx-auto">
+      A refined workflow that blends AI intelligence with human creativity
+      to deliver cinematic perfection.
+    </p>
+  </div>
+
+  <!-- Timeline -->
+  <div class="relative grid md:grid-cols-4 gap-12">
+
+    <!-- Vertical Line (Desktop) -->
+    <div class="hidden md:block absolute top-6 left-1/2 w-[2px] h-full bg-gradient-to-b from-[#D4AF37] to-transparent -translate-x-1/2"></div>
+
+    <!-- STEP 01 -->
+    <div class="relative text-center md:text-left">
+      <div class="glass gold-border rounded-2xl p-6">
+        <span class="text-sm text-[#D4AF37] font-semibold">STEP 01</span>
+        <h3 class="text-lg font-semibold text-white mt-2">
+          Understanding Your Vision
+        </h3>
+        <p class="text-gray-400 text-sm mt-3">
+          We listen, analyze, and align with your expectations .
+        </p>
+      </div>
+    </div>
+
+    <!-- STEP 02 -->
+    <div class="relative text-center md:text-left">
+      <div class="glass gold-border rounded-2xl p-6">
+        <span class="text-sm text-[#D4AF37] font-semibold">STEP 02</span>
+        <h3 class="text-lg font-semibold text-white mt-2">
+          AI-Powered Editing
+        </h3>
+        <p class="text-gray-400 text-sm mt-3">
+          Advanced AI tools enhance visuals, transitions, and storytelling flow.
+        </p>
+      </div>
+    </div>
+
+    <!-- STEP 03 -->
+    <div class="relative text-center md:text-left">
+      <div class="glass gold-border rounded-2xl p-6">
+        <span class="text-sm text-[#D4AF37] font-semibold">STEP 03</span>
+        <h3 class="text-lg font-semibold text-white mt-2">
+          Manual Fine-Tuning
+        </h3>
+        <p class="text-gray-400 text-sm mt-3">
+          Our editors refine every frame to ensure emotional depth and perfection.
+        </p>
+      </div>
+    </div>
+
+    <!-- STEP 04 -->
+    <div class="relative text-center md:text-left">
+      <div class="glass gold-border rounded-2xl p-6">
+        <span class="text-sm text-[#D4AF37] font-semibold">STEP 04</span>
+        <h3 class="text-lg font-semibold text-white mt-2">
+          Final Delivery
+        </h3>
+        <p class="text-gray-400 text-sm mt-3">
+          Delivered in premium quality formats, ready to be cherished forever.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+    <section class="relative bg-black py-28">
+  <div class="max-w-7xl mx-auto px-6">
+
+    <!-- Heading -->
+    <div class="text-center mb-20">
+      <h2 class="text-3xl md:text-4xl font-bold text-[#D4AF37]">
+        Our Work
+      </h2>
+      <p class="mt-4 text-gray-400 max-w-2xl mx-auto">
+        A glimpse into our premium cinematic edits and luxury package designs.
+      </p>
+    </div>
+
+    <!-- Work Grid -->
+    <div class="grid md:grid-cols-3 gap-10">
+
+      <!-- Work Card -->
+      <div class="group relative rounded-2xl overflow-hidden glass gold-border shadow-xl">
+
+        <!-- Image -->
+        <div class="aspect-[3/4] overflow-hidden">
+          <img
+            src="./images/wedding-silver.jpeg"
+            alt="Wedding Teaser Silver Package"
+            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+          />
+        </div>
+
+        <!-- Hover Overlay -->
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent
+                 opacity-0 group-hover:opacity-100 transition duration-500"
+        ></div>
+
+        <!-- Overlay Content -->
+        <div
+          class="absolute bottom-0 left-0 right-0 p-6
+                 translate-y-6 opacity-0 group-hover:translate-y-0
+                 group-hover:opacity-100 transition duration-500"
+        >
+          <h3 class="text-lg font-semibold text-[#D4AF37]">
+            Wedding Teaser – Silver Package
+          </h3>
+          <p class="text-gray-300 text-sm mt-2">
+            Cinematic wedding teaser with premium storytelling.
+          </p>
+
+          <a
+            href="#services"
+            class="inline-block mt-4 px-6 py-2 rounded-full
+                   text-sm font-semibold text-black gold-gradient"
+          >
+            View Details
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Duplicate for more works -->
+      <div class="group relative rounded-2xl overflow-hidden glass gold-border shadow-xl">
+        <div class="aspect-[3/4] overflow-hidden">
+          <img
+            src="./images/wedding-silver.jpeg"
+            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+          />
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-6 translate-y-6 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition">
+          <h3 class="text-lg font-semibold text-[#D4AF37]">
+            Silver Wedding Package
+          </h3>
+          <p class="text-gray-300 text-sm mt-2">
+            Emotional edits with cinematic flow.
+          </p>
+
+          <a
+            href="#services"
+            class="inline-block mt-4 px-6 py-2 rounded-full
+                   text-sm font-semibold text-black gold-gradient"
+          >
+            View Details
+          </a>
+        </div>
+      </div>
+
+      <div class="group relative rounded-2xl overflow-hidden glass gold-border shadow-xl">
+        <div class="aspect-[3/4] overflow-hidden">
+          <img
+            src="./images/wedding-silver.jpeg"
+            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+          />
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-6 translate-y-6 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition">
+          <h3 class="text-lg font-semibold text-[#D4AF37]">
+            Luxury Teaser Design
+          </h3>
+          <p class="text-gray-300 text-sm mt-2">
+            AI-powered cinematic wedding visuals.
+          </p>
+
+          <a
+            href="#services"
+            class="inline-block mt-4 px-6 py-2 rounded-full
+                   text-sm font-semibold text-black gold-gradient"
+          >
+            View Details
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+    <section class="relative max-w-7xl mx-auto px-6 py-28">
+
+  <!-- Heading -->
+  <div class="text-center mb-20">
+    <h2 class="text-3xl md:text-4xl font-bold text-[#D4AF37]">
+      What Our Clients Say
+    </h2>
+    <p class="mt-4 text-gray-400 max-w-2xl mx-auto">
+      Trusted by couples, families, and professionals to preserve their
+      most meaningful moments.
+    </p>
+  </div>
+
+  <!-- Testimonials -->
+  <div class="grid md:grid-cols-3 gap-10">
+
+    <!-- Testimonial 1 -->
+    <div
+      class="relative glass gold-border rounded-2xl p-8 hover:-translate-y-1 transition"
+    >
+      <span class="absolute -top-6 left-6 text-6xl text-[#D4AF37]/30">“</span>
+
+      <p class="text-gray-300 text-sm leading-relaxed mt-6">
+        Absolutely stunning wedding video. Every emotion was captured
+        perfectly, and the cinematic flow exceeded our expectations.
+      </p>
+
+      <div class="mt-6 flex items-center justify-between">
+        <span class="text-[#D4AF37] font-semibold">
+          Wedding Client
+        </span>
+        <span
+          class="text-xs px-3 py-1 rounded-full border border-[#D4AF37]/40
+                 text-[#D4AF37]"
+        >
+          Wedding Film
+        </span>
+      </div>
+    </div>
+
+    <!-- Testimonial 2 -->
+    <div
+      class="relative glass gold-border rounded-2xl p-8 hover:-translate-y-1 transition"
+    >
+      <span class="absolute -top-6 left-6 text-6xl text-[#D4AF37]/30">“</span>
+
+      <p class="text-gray-300 text-sm leading-relaxed mt-6">
+        Premium album design with beautiful layouts and cinematic
+        storytelling. Every page feels elegant and timeless.
+      </p>
+
+      <div class="mt-6 flex items-center justify-between">
+        <span class="text-[#D4AF37] font-semibold">
+          Album Client
+        </span>
+        <span
+          class="text-xs px-3 py-1 rounded-full border border-[#D4AF37]/40
+                 text-[#D4AF37]"
+        >
+          Album Design
+        </span>
+      </div>
+    </div>
+
+    <!-- Testimonial 3 -->
+    <div
+      class="relative glass gold-border rounded-2xl p-8 hover:-translate-y-1 transition"
+    >
+      <span class="absolute -top-6 left-6 text-6xl text-[#D4AF37]/30">“</span>
+
+      <p class="text-gray-300 text-sm leading-relaxed mt-6">
+        Highly professional team with excellent communication.
+        Delivered the project on time with outstanding quality.
+      </p>
+
+      <div class="mt-6 flex items-center justify-between">
+        <span class="text-[#D4AF37] font-semibold">
+          Corporate Client
+        </span>
+        <span
+          class="text-xs px-3 py-1 rounded-full border border-[#D4AF37]/40
+                 text-[#D4AF37]"
+        >
+          Corporate Video
+        </span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+    <section
+      id="contact"
+      class="py-24 text-center bg-gradient-to-t from-black to-[#0A0A0A]"
+    >
+      <h2 class="text-3xl md:text-4xl font-bold text-[#D4AF37] mb-6">
+        Ready to Elevate Your Memories?
+      </h2>
+      <p class="text-gray-300 mb-10">
+        Let’s create something timeless together.
+      </p>
+
+      <a
+          href="https://wa.me/919014750705"
+          class="inline-flex items-center gap-2 px-8 py-3 rounded-full
+                 font-semibold text-black gold-gradient shadow-xl
+                 hover:scale-105 transition"
+        >
+          Chat us on WhatsApp
+        </a>
+    </section>
+
+    <!-- ================= FLOATING CART ================= -->
+    <button
+      id="cartBtn"
+      onclick="openCart()"
+      class="z-50 fixed bottom-24 right-6 gold-gradient w-14 h-14 rounded-full flex items-center justify-center shadow-xl"
+    >
+      <i data-lucide="shopping-cart"></i>
+
+      <!-- Cart Count Badge -->
+      <span
+        id="cartCount"
+        class="absolute -top-1 -right-1 bg-black text-[#D4AF37] text-xs font-bold w-6 h-6 flex items-center justify-center rounded-full border border-[#D4AF37] hidden"
+      >
+        0
+      </span>
+    </button>
+
+    <!-- ================= CART MODAL ================= -->
+    <div
+  id="cartModal"
+  class="hidden fixed inset-0 bg-black/70 flex items-center justify-center z-50"
+>
+  <div
+    class="bg-white text-black w-11/12 max-w-md rounded-2xl p-6 relative"
+  >
+    <h2 class="text-xl font-bold mb-4">Your Service List</h2>
+
+    <!-- Cart Items -->
+    <ul id="cartItems" class="space-y-3 mb-6"></ul>
+
+    <!-- Action Buttons -->
+    <div class="flex flex-col gap-3">
+      <button
+        onclick="handleWhatsAppOrder()"
+        class="w-full gold-gradient py-3 rounded-full font-semibold"
+      >
+        Order via WhatsApp
+      </button>
+
+      <button
+        onclick="clearCart()"
+        class="w-full py-3 rounded-full font-semibold border border-red-500 text-red-600 hover:bg-red-50 transition"
+      >
+        Clear Cart
+      </button>
+
+      <button
+        onclick="closeCart()"
+        class="w-full text-sm text-gray-600 hover:underline"
+      >
+        Close
+      </button>
+    </div>
+  </div>
+</div>
+
+
+    <!-- ================= FLOATING WHATSAPP ================= -->
+    <div
+      class="wa-container fixed bottom-6 right-6 flex items-center gap-3 z-50"
+    >
+      <div class="wa-label bg-white text-black px-4 py-2 rounded-full shadow">
+        Chat with us!
+      </div>
+      <a
+        href="https://wa.me/919014750705?text=Hello%20Vj%20Edit%20Point!%20I%20would%20like%20to%20know%20more%20about%20your%20Packages."
+        target="_blank"
+        class="bg-green-500 w-14 h-14 rounded-full flex items-center justify-center shadow-xl"
+      >
+        <i data-lucide="message-circle"></i>
+      </a>
+    </div>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="relative bg-black border-t border-[#D4AF37]/20">
+
+  <!-- Soft Top Glow -->
+  <div class="absolute inset-x-0 -top-20 h-20 bg-gradient-to-t from-[#D4AF37]/10 to-transparent"></div>
+
+  <div class="max-w-7xl mx-auto px-6 py-16">
+
+    <!-- Footer Content -->
+    <div class="grid md:grid-cols-3 gap-12 text-center md:text-left">
+
+      <!-- Brand -->
+      <div>
+        <img
+              src="./images/logo.png"
+              alt="VJ Edit Point Logo"
+              class="h-14 w-auto object-contain mb-6"
+            />
+        <p class="text-gray-400 text-sm leading-relaxed">
+          Premium AI-powered video editing and luxury album designing studio,
+          crafting timeless memories with cinematic excellence.
+        </p>
+      </div>
+
+      <!-- Contact Info -->
+      <div>
+        <h4 class="text-lg font-semibold text-white mb-4">
+          Contact Information
+        </h4>
+        <ul class="space-y-3 text-gray-400 text-sm">
+          <li class="flex items-center justify-center md:justify-start gap-3">
+            <span class="text-[#D4AF37]">📍</span>
+            Kukatpally, Sangeeth Nagar, Hyderabad
+          </li>
+          <li class="flex items-center justify-center md:justify-start gap-3">
+            <span class="text-[#D4AF37]">🕒</span>
+            10:30 AM – 10:00 PM (Sunday Holiday)
+          </li>
+          <li class="flex items-center justify-center md:justify-start gap-3">
+            <span class="text-[#D4AF37]">📞</span>
+            <a href="tel:+919014750705" class="hover:text-[#D4AF37] transition">
+              +91 90147 50705
+            </a>
+          </li>
+        </ul>
+        <p class="mt-2 font-semibold">Social</p>
+        <div class="w-10 h-10 rounded-full flex items-center justify-center">
+            <a href="https://www.instagram.com/vj_edit_point?igsh=MTZvdjRsOTlkZ2NvZw%3D%3D&utm_source=qr" target="/" class="social-icon" aria-label="Instagram">
+<img width="48" height="48" src="https://img.icons8.com/fluency/48/instagram-new.png" alt="instagram-new"/>            </a>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div>
+        <h4 class="text-lg font-semibold text-white mb-4">
+          Start Your Journey
+        </h4>
+        <p class="text-gray-400 text-sm mb-6">
+          Let’s create something unforgettable together.
+        </p>
+        <a
+          href="https://wa.me/919014750705"
+          class="inline-flex items-center gap-2 px-8 py-3 rounded-full
+                 font-semibold text-black gold-gradient shadow-xl
+                 hover:scale-105 transition"
+        >
+          Chat on WhatsApp
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Divider -->
+    <!-- <div class="my-12 h-px bg-gradient-to-r from-transparent via-[#D4AF37]/40 to-transparent"></div> -->
+
+    <!-- Bottom Bar -->
+    <!-- <div class="text-center text-gray-500 text-xs">
+      © <span id="year"></span> VJ Edit Point. All rights reserved.
+    </div> -->
+
+
+    <div class="footer-bar">
+  <div class="footer-line">
+    Made with
+    <svg class="heart-icon" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 1 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78Z"/>
+    </svg>
+    by
+    <a
+      href="https://staffarc.in"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="brand-link"
+    >
+      <img
+        src="https://www.staffarc.in/images/Staffarc-logo.png"
+        alt="StaffArc logo"
+        class="brand-logo"
+      />
+      <span>StaffArc</span>
+    </a>
+  </div>
+</div>
+
+  </div>
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+
+    <script>
+      lucide.createIcons();
+
+      const cart = [];
+
+      function updateCartCount() {
+        const countBadge = document.getElementById("cartCount");
+        const count = cart.length;
+
+        if (count > 0) {
+          countBadge.textContent = count;
+          countBadge.classList.remove("hidden");
+        } else {
+          countBadge.classList.add("hidden");
+        }
+      }
+
+      function showCartToast(text) {
+    const toast = document.getElementById("cartToast");
+    // const toastText = document.getElementById("toastText");
+
+    // toastText.textContent = text;
+
+    toast.classList.add("show");
+
+    setTimeout(() => {
+      toast.classList.remove("show");
+    }, 2500);
+  }
+
+  function addToCart(service) {
+    cart.push(service);
+
+    // Update cart count
+    updateCartCount();
+
+    // Pulse animation on cart icon
+    const cartBtn = document.getElementById("cartBtn");
+    cartBtn.classList.add("pulse");
+    setTimeout(() => cartBtn.classList.remove("pulse"), 600);
+
+    // Show beautiful popup
+    showCartToast(service);
+  }
+
+      function openCart() {
+        document.getElementById("cartModal").classList.remove("hidden");
+
+        const list = document.getElementById("cartItems");
+        list.innerHTML = cart.map((item) => `<li>• ${item}</li>`).join("");
+      }
+
+      function closeCart() {
+        document.getElementById("cartModal").classList.add("hidden");
+      }
+
+      function handleWhatsAppOrder() {
+        const message = encodeURIComponent(
+          "Hello Vj Edit Point!, I would like to order: " + cart.join(", ")
+        );
+        window.open(`https://wa.me/919014750705?text=${message}`, "_blank");
+      }
+
+      function clearCart() {
+        cart.length = 0; // clear array
+        updateCartCount();
+
+        // Clear UI
+        document.getElementById("cartItems").innerHTML =
+          '<li class="text-gray-400 text-sm text-center">Cart is empty</li>';
+
+        closeCart();
+      }
+
+      function updateCartUI() {
+    const list = document.getElementById("cartItems");
+
+    if (cart.length === 0) {
+      list.innerHTML =
+        '<li class="text-gray-400 text-sm text-center">Cart is empty</li>';
+      return;
+    }
+
+    list.innerHTML = cart
+      .map(
+        (item, index) => `
+        <li class="flex items-center justify-between bg-gray-100 px-3 py-2 rounded-lg">
+          <span class="text-sm">${item}</span>
+
+          <button
+            onclick="removeFromCart(${index})"
+            class="text-red-500 hover:text-red-700 transition"
+            aria-label="Remove item"
+          >
+            🗑️
+          </button>
+        </li>
+      `
+      )
+      .join("");
+  }
+
+  function openCart() {
+    document.getElementById("cartModal").classList.remove("hidden");
+    updateCartUI();
+  }
+
+  function removeFromCart(index) {
+    cart.splice(index, 1);
+    updateCartCount();
+    updateCartUI();
+  }
+
+  function clearCart() {
+    cart.length = 0;
+    updateCartCount();
+    updateCartUI();
+    closeCart();
+  }
+
+  let menuOpen = false;
+
+  function toggleMenu() {
+    const menu = document.getElementById("mobileMenu");
+    const line1 = document.getElementById("line1");
+    const line2 = document.getElementById("line2");
+    const line3 = document.getElementById("line3");
+
+    menuOpen = !menuOpen;
+
+    if (menuOpen) {
+      // Show menu
+      menu.classList.remove("opacity-0", "pointer-events-none");
+      menu.classList.add("opacity-100");
+
+      // Transform to X
+      line1.setAttribute("d", "M6 6l12 12");
+      line2.style.opacity = "0";
+      line3.setAttribute("d", "M6 18l12 6");
+    } else {
+      // Hide menu
+      menu.classList.add("opacity-0", "pointer-events-none");
+      menu.classList.remove("opacity-100");
+
+      // Back to hamburger
+      line1.setAttribute("d", "M4 6h16");
+      line2.style.opacity = "1";
+      line3.setAttribute("d", "M4 18h16");
+    }
+  }
+
+  function openMenu() {
+    const menu = document.getElementById("mobileMenu");
+    menu.classList.remove("opacity-0", "pointer-events-none");
+    menu.classList.add("opacity-100");
+  }
+
+  function closeMenu() {
+    const menu = document.getElementById("mobileMenu");
+    menu.classList.add("opacity-0", "pointer-events-none");
+    menu.classList.remove("opacity-100");
+  }
+    </script>
+  </body>
+</html>
