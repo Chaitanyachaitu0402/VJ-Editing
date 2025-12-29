@@ -1,0 +1,4 @@
+# Ignore large videos
+images/*.MP4
+images/*.mp4
+videos/*.mp4
